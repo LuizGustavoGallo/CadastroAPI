@@ -1,6 +1,9 @@
-package dev.java10x.CadastroApi;
+package dev.java10x.CadastroApi.Ninja;
 
+import dev.java10x.CadastroApi.Missaoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 //Transformando a classe em uma entidade do Banco de Dados
 @Entity
@@ -10,9 +13,17 @@ public class NinjaModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String nome;
+
     private String email;
+
     private int idade;
+
+    //@ManyToOne - um ninja tem uma unica missao
+    @ManyToOne
+    private MissoesModel missoes;
+
 
     public NinjaModel() {
     }
