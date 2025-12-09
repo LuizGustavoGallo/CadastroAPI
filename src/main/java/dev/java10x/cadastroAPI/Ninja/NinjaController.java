@@ -1,4 +1,4 @@
-package dev.java10x.cadastroAPI;
+package dev.java10x.cadastroAPI.Ninja;
 
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;

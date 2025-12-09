@@ -1,6 +1,9 @@
-package dev.java10x.cadastroAPI;
+package dev.java10x.cadastroAPI.Ninja;
 
+import dev.java10x.cadastroAPI.Missoes.MissoesModel;
 import jakarta.persistence.*;
+
+import java.util.List;
 
 // Transforma a classe em uma entidade do BD
 @Entity
@@ -16,6 +19,11 @@ public class NinjaModel {
     private String email;
 
     private int idade;
+
+    // @ManyToOne - um ninja tem uma unica missão
+    @ManyToOne
+    @JoinColumn(name = "missoes_id")
+    private MissoesModel missoes;
 
     public NinjaModel() {
     }
