@@ -35,4 +35,13 @@ public class MissoesService {
         missoesRepository.deleteById(id);
     }
 
+    // Alterar nissoes por Id
+    public MissoesModel atualizarMissoes(Long id, MissoesModel missaoAtualizada) {
+        if (missoesRepository.existsById(id)) {
+            missaoAtualizada.setId(id);
+            return missoesRepository.save(missaoAtualizada);
+        }
+        return null;
+    }
+
 }
