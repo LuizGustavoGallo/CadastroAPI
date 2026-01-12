@@ -33,7 +33,9 @@ public class NinjaController {
             @ApiResponse(responseCode = "201", description = "Ninja criado com sucesso"),
             @ApiResponse(responseCode = "400", description = "Erro na criação do ninja.")
     })
-    public ResponseEntity<String> criarNinja(@RequestBody NinjaDTO ninja) {
+    public ResponseEntity<String> criarNinja(
+            @Parameter(description = "Usuario informará os dados do ninja a ser criado no campo da requisição")
+            @RequestBody NinjaDTO ninja) {
         NinjaDTO novoNinja = ninjaService.criarNinja(ninja);
         return ResponseEntity.status(HttpStatus.CREATED)
                 .body("Ninja foi criado com sucesso: " + novoNinja.getNome() + " (ID): " + novoNinja.getId());
@@ -95,7 +97,7 @@ public class NinjaController {
 
     // Deleter Ninja (DELETE)
     @DeleteMapping("/deletar/{id}")
-    @Operation(summary = "Deleta o ninja por ID", description = "Rota altera o ninja presente no ID requisitado.")
+    @Operation(summary = "Deleta o ninja por ID", description = "Rota deleta o ninja presente no ID requisitado.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "201", description = "Ninja deletado com sucesso."),
             @ApiResponse(responseCode = "400", description = "Ninja requisitado pelo ID não foi encontrado.")
